@@ -1,0 +1,50 @@
+.actions {
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 400px;
+}
+/* Labels and selects */
+label {
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+    font-size: 1rem;
+    gap: 5px;
+}
+
+input[type="color"], select, input[type="file"], button, a.btn {
+    padding: 8px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+    transition: 0.3s ease;
+}
+
+input[type="color"] {
+    height: 40px;
+    border: none;
+    cursor: pointer;
+}
+
+select:hover, input[type="file"]:hover, button:hover, a.btn:hover {
+    border-color: #4a90e2;
+}
+
+/* Buttons */
+button, a.btn {
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+}
+
+button:hover, a.btn:hover {
+    background-color: #3b7ac0;
+}

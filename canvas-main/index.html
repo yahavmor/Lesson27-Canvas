@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="style/styles.css">
+      <title>Canvas</title>
+</head>
+<body onload="onInit()">
+      <h1 class="main-header">Mister Canvas</h1>
+      <main>
+            <section class="actions">
+            <label for="input" class="brush-color">Brush color:   
+            <input type="color" oninput="onChangeColor(this.value)">
+            </label>
+            <label for="select" class="brush-size">Brush size: 
+                  <select name="brush-size" oninput="onChangeSize(this.value)">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="5">5</option>
+                  <option value="10">10</option>
+                  <option value="20">20</option>
+            </select>
+            </label>
+            
+            <label for="brush-shape" class="brush-shape"> Brush shape: 
+                  <select name="brush-shape"  oninput="onChangeShape(this.value)">
+                  <option value="round">circle</option>
+                  <option value="square">square</option>
+            </select>
+
+            </label> 
+            
+            <button class="btn-clr" onclick="onClearCanvas()">Clear Canvas</button>
+            <a
+                  href="#"
+                  class="btn"
+                  onclick="onDownloadImg(this)"
+                  download="my-beatifull-draw.jpg"
+                  >Download
+            </a>
+            <div class="upload-section">
+                  <label for="input">Background photo: 
+                        <input type="file" onchange="onImgInput(event)" />
+                  </label>
+                 
+            </div>
+            <form
+				action=""
+				method="POST"
+				enctype="multipart/form-data"
+				onsubmit="onUploadImg(event)"
+		>
+				<input name="img" id="imgData" type="hidden" />
+				<button class="btn" type="submit">Upload to Cloudinary</button>
+		</form>
+            <div class="share-container"></div>  
+      </section>
+      <div class="canvas-container">
+      <canvas class="my-canvas" width="400" height="400"
+            onmousedown="onDown(event)"
+            onmouseup="onUp()" 
+            onmousemove="onMove(event)"
+    ></canvas>
+      </div>
+
+      </main>
+      
+
+      <script src="js.js"></script>
+</body>
+</html>
+

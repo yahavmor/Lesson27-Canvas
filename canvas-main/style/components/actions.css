@@ -20,7 +20,6 @@ input[type="color"], select, input[type="file"], button, a.btn {
     border: 1px solid #ccc;
     border-radius: 6px;
     outline: none;
-    transition: 0.3s ease;
 }
 
 input[type="color"] {
@@ -33,7 +32,6 @@ select:hover, input[type="file"]:hover, button:hover, a.btn:hover {
     border-color: #4a90e2;
 }
 
-/* Buttons */
 button, a.btn {
     background-color: #4a90e2;
     color: white;

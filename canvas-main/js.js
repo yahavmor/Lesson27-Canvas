@@ -25,7 +25,6 @@ function renderCanvas() {
     ctx.fillStyle = 'white'
     ctx.fillRect(0, 0, canvas.width, canvas.height)
 }
-addEventListener('resize',onInit)
    
 
 function onClearCanvas(){
@@ -51,6 +50,7 @@ function onDown(ev) {
 function onMove(ev) {
     if (!isDrawing) return;
     const pos = getEvPos(ev);
+    checkBoundries(pos)
 
     ctx.lineTo(pos.x, pos.y);
     ctx.strokeStyle = gLine.color;
@@ -63,24 +63,25 @@ function onUp() {
     isDrawing = false;
     ctx.closePath();
 }
+function resizeCanvas() {
+    const elContainer = document.querySelector('.canvas-container');
+    const rect = elContainer.getBoundingClientRect();
+
+    canvas.width = rect.width;
+    canvas.height = rect.height;
+}
 function getEvPos(ev) {
-    const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
+    const rect = canvas.getBoundingClientRect();
 
     let pos = {
-        x: ev.offsetX,
-        y: ev.offsetY,
-    }
-    if (TOUCH_EVS.includes(ev.type)) {
-        ev.preventDefault()
+        x: (ev.clientX - rect.left) * (canvas.width / rect.width),
+        y: (ev.clientY - rect.top) * (canvas.height / rect.height),
+    };
 
-        ev = ev.changedTouches[0]
-        pos = {
-            x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
-            y: ev.pageY - ev.target.offsetTop - ev.target.clientTop,
-        }
-    }
-    return pos
+    return pos;
 }
+
+
 
 function onDownloadImg(elLink) {
     const imgContent = canvas.toDataURL('image/jpeg')
@@ -154,6 +155,10 @@ function onUploadToFB(url) {
 }
 
 
+function checkBoundries(pos){
+    const canvasWidth = canvas.width
+    const canvasHeight = canvas.height
 
+    if(pos.x>=canvasWidth||pos.y>=canvasHeight||pos.x<=0||pos.y<=0)isDrawing = false
 
-
+}

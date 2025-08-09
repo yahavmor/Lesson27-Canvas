@@ -1,6 +1,6 @@
-@import url(basic.css);
 @import url(components/main-header.css);
 @import url(components/actions.css);
 @import url(components/canvas.css);
-
+@import url(basic.css);
+@import url(mq.css);
 
